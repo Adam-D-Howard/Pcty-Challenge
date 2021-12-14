@@ -1,0 +1,8 @@
+
+<ion-list *ngIf="displayList?.length>0">
+  <ion-item *ngFor="let item of displayList" class="displayItem" [class.selectedItem]="selectedPerson?.name === item.name" (click)="onClick($event, item)">
+    <ion-icon name="trash" slot="start" class="trash-icon" (click)="onDelete($event, item)"></ion-icon>
+    <span slot="end" style="width: 100%;">{{item.name}}</span>
+    <!-- <ion-label slot="start">{{item.name}}</ion-label> -->
+  </ion-item>
+</ion-list>

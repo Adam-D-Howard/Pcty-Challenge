@@ -1,0 +1,56 @@
+
+<ion-grid>
+  <ion-row *ngIf="!employee">
+    <ion-col>
+    Please Select an Employee
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="employee">
+    <ion-col>
+      <ion-row>
+        <ion-col>
+          <ion-label class="field-label">Employee Name:</ion-label>
+          <ion-input id="employeeName" [(ngModel)]="employee.name"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-label class="list-header">
+        <span class="list-header-text">Dependents:</span>
+        <button class="header-icon">
+          <ion-icon name="add-circle" title="Add Employee" (click)="addDependentClick()">
+          </ion-icon>
+        </button>
+        <button class="header-icon">
+          <ion-icon name="disc" title="Save" (click)="saveDependentClick()">
+          </ion-icon>
+        </button>
+        <button class="header-icon">
+          <ion-icon name="trash" title="Add Employee" (click)="deleteDependentClick()">
+          </ion-icon>
+        </button>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div *ngIf="employee.dependents.length === 0">
+        No dependents on file
+      </div>
+      <div *ngIf="employee.dependents.length > 0">
+        Dependent:
+        <select [(ngModel)]="selectedDependentId" (change)="dependentSelectChanged()">
+          <option *ngFor="let dependent of employee.dependents" [ngValue]="dependent.id">{{dependent.name}}</option>
+        </select>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="selectedDependent">
+    <ion-col>
+      <span class="field-label">Dependent Name:</span>
+      <ion-input id="dependentName" [(ngModel)]="selectedDependent.name"></ion-input>
+    </ion-col>
+  </ion-row>
+</ion-grid>

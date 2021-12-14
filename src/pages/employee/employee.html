@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Employee</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row class="header-row">
+      <ion-col>
+        Employee:
+        <select [(ngModel)]="selectedEmployeeId" (change)="employeeSelectChanged()">
+          <option *ngFor="let employee of employeeService.employeeDataCache" [ngValue]="employee.id">{{employee.name}}</option>
+        </select>
+      </ion-col>
+      <ion-col>
+        <button class="header-icon">
+          <ion-icon name="add-circle" title="Add Employee" (click)="addEmployeeClick()">
+          </ion-icon>
+        </button>
+        <button class="header-icon">
+          <ion-icon name="disc" title="Save" (click)="saveEmployeeClick()">
+          </ion-icon>
+        </button>
+        <button class="header-icon">
+          <ion-icon name="trash" title="Add Employee" (click)="deleteEmployeeClick()">
+          </ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!selectedEmployee">
+      <ion-col>
+        Please Select an Employee
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="selectedEmployee">
+      <ion-col>
+        <employee-edit [employee]="selectedEmployee"
+          [employeeDataService]="employeeService"
+          [new]="newEmployee"></employee-edit>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

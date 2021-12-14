@@ -1,0 +1,19 @@
+.list-header {
+  font-size: 1.5em;
+  display: table;
+  width: 100%;
+}
+
+.list-header-text {
+  display: table-cell;
+  text-align: left;
+}
+
+.list-header-icon {
+  display: table-cell;
+  text-align: right;
+}
+
+.field-label {
+  font-weight: bold;
+}

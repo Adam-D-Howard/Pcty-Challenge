@@ -1,0 +1,42 @@
+<table class="report-table">
+  <tr>
+    <th>
+      Employee
+    </th>
+    <th>
+      Num Dependents
+    </th>
+    <th>
+      Benefit Code
+    </th>
+    <th>
+      Benefit Cost
+    </th>
+  </tr>
+  <tr *ngFor="let row of reportResults">
+    <td>
+      {{row.employee.name}}
+    </td>
+    <td>
+      {{row.employee.dependents.length}}
+    </td>
+    <td>
+      {{row.benefit.benefitCode}}
+    </td>
+    <td>
+      {{row.benefitCost}}
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      &nbsp;
+    </td>
+    <td class="total-cost-cell">
+      Total Cost:
+    </td>
+    <td class="total-cost-cell">
+      {{totalCost}}
+    </td>
+  </tr>
+
+</table>
